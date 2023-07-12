@@ -12,7 +12,7 @@ from langchain.document_loaders import DirectoryLoader, TextLoader
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.indexes.vectorstore import VectorStoreIndexWrapper
-from langchain.llms import OpenAI
+# from langchain.llms import OpenAI
 from langchain.vectorstores import Chroma
 
 
