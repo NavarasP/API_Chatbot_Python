@@ -4,7 +4,7 @@ import constants
 # import sys
 
 from flask import Flask, request, jsonify
-# from flask_cors import CORS
+from flask_cors import CORS
 import openai
 from langchain.chains import ConversationalRetrievalChain, RetrievalQA
 from langchain.chat_models import ChatOpenAI
@@ -19,7 +19,7 @@ from langchain.vectorstores import Chroma
 
 
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 os.environ["OPENAI_API_KEY"] = constants.APIKEY
 
 # Enable to save to disk & reuse the model (for repeated queries on the same data)

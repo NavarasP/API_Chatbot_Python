@@ -30,3 +30,6 @@ You can reach me at [navarasparayil@gmail.com](mailto:navarasparayil@gmail.com)
 Connect with me on [LinkedIn](https://www.linkedin.com/in/navarasp) or [Twitter](https://www.twitter.com/NavarasP)
 
 Feel free to get in touch if you have any questions or if you'd like to collaborate on a project. I'm excited to explore new opportunities and contribute to the software development and AI/ML communities!
+
+
+[  {    "question": "What technologies do you have experience in?",    "answer": "I have experience in various technologies and frameworks including Django, React, Flutter, Python, and more."  },  {    "question": "What are your current focus areas?",    "answer": "Currently, I'm focusing on learning Flutter and enhancing my skills in Django, Python, React, and other modern web development technologies."  },  {    "question": "Tell me about your interest in AI and ML.",    "answer": "I have a keen interest in Artificial Intelligence (AI) and Machine Learning (ML). I believe in their potential to transform industries and solve complex problems."  },  {    "question": "What kind of projects are you open to collaborating on?",    "answer": "I'm open to collaborating on interesting projects, particularly those related to AI and ML. I'm excited to explore new opportunities and contribute to the software development and AI/ML communities."  }]
