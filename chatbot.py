@@ -1,78 +1,10 @@
 import os
+import time
 import constants
-
-os.environ["OPENAI_API_KEY"] = constants.APIKEY
-
-# from langchain.document_loaders import WebBaseLoader
-# from langchain.document_loaders import TextLoader
-# from langchain.document_loaders import DirectoryLoader
-# from langchain.indexes import VectorstoreIndexCreator
-# from langchain. llms import OpenAI
-
-# from langchain.text_splitter import CharacterTextSplitter
-# import pickle
-# import faiss
-# from langchain.vectorstores import FAISS
-# from langchain.embeddings import OpenAIEmbeddings
-# from langchain.chains import RetrievalQAWithSourcesChain
-# from langchain.chains.question_answering import load_qa_chain
-# from langchain import OpenAI
-
-# from langchain.chat_models import ChatopenAI
-
-
-
-# query = sys.argv[1]
-# loader = TextLoader( 'data.txt' )
-# loader = DirectoryLoader('./data')
-# data = loader.load()
-
-# text_splitter = CharacterTextSplitter(separator='\n', 
-#                                       chunk_size=1000, 
-#                                       chunk_overlap=200)
-# docs = text_splitter.split_documents(data)
-
-# embeddings = OpenAIEmbeddings()
-
-# with open("faiss_store_openai.pkl", "rb") as f:
-#     VectorStore = pickle.load(f)
-
-# llm=OpenAI(temperature=0, model_name='')
-# chain = RetrievalQAWithSourcesChain.from_llm(llm=llm, retriever=VectorStore.as_retriever())
-# chain({"question": "How big is stableLM?"}, return_only_outputs=True)
-
-
-
-
-
-# index = VectorstoreIndexCreator().from_loaders([loader])
-
-# print(index.query(query))
-
-
-
-
-
-
-
-# from langchain.document_loaders import WebBaseLoader
-# from langchain.indexes import VectorstoreIndexCreator
-
-
-
-# loader = WebBaseLoader("https://lilianweng.github.io/posts/2023-06-23-agent/")
-# index = VectorstoreIndexCreator().from_loaders([loader])
-# question = "What is Task Decomposition?"
-# index.query(question)
-
-
-
-
-
-
-
+# import sys
 
 from flask import Flask, request, jsonify
+# from flask_cors import CORS
 import openai
 from langchain.chains import ConversationalRetrievalChain, RetrievalQA
 from langchain.chat_models import ChatOpenAI
@@ -83,9 +15,11 @@ from langchain.indexes.vectorstore import VectorStoreIndexWrapper
 from langchain.llms import OpenAI
 from langchain.vectorstores import Chroma
 
-import constants
+
+
 
 app = Flask(__name__)
+# CORS(app)
 os.environ["OPENAI_API_KEY"] = constants.APIKEY
 
 # Enable to save to disk & reuse the model (for repeated queries on the same data)
@@ -109,18 +43,38 @@ chain = ConversationalRetrievalChain.from_llm(
 
 chat_history = []
 
+@app.route('/', methods=['GET'])
+def get():
+    return jsonify('Hello World! Dont Try')
+
+MAX_RETRY_COUNT = 3
+
 @app.route('/api/chat', methods=['POST'])
 def chat():
     query = request.json['query']
+    print("Received query:", query)
 
     if query.lower() in ['quit', 'q', 'exit']:
         return jsonify({'answer': 'Goodbye!'})
 
-    result = chain({"question": query, "chat_history": chat_history})
-    answer = result['answer']
+    retry_count = 0
+    while retry_count < MAX_RETRY_COUNT:
+        try:
+            result = chain({"question": query, "chat_history": chat_history})
+            answer = result['answer']
 
-    chat_history.append((query, answer))
-    return jsonify({'answer': answer})
+            chat_history.append((query, answer))
+            return jsonify({'answer': answer})
+        except openai.error.RateLimitError as e:
+            print("Rate limit reached. Retrying in 20 seconds...")
+            time.sleep(20)
+            retry_count += 1
+            continue
+        except Exception as e:
+            print("An error occurred:", str(e))
+            return jsonify({'answer': 'An error occurred. Please try again later.'})
+
+    return jsonify({'answer': 'Rate limit exceeded. Please try again later.'})
 
 if __name__ == '__main__':
     app.run()
