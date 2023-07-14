@@ -17,14 +17,15 @@ Before running the project, ensure that you have the following:
 ## Installation
 
 1. Clone the repository:
+```
 git clone https://github.com/your-username/your-repository.git
+```
 
-
-2. Change into the project directory:
+3. Change into the project directory:
 cd your-repository
 
 
-3. Install the required dependencies using pip:
+4. Install the required dependencies using pip:
 
 
 3. Install the required dependencies using pip:
