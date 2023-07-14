@@ -34,7 +34,8 @@ pip install -r requirements.txt
 ## Configuration
 
 1. Set the OpenAI API key as an environment variable:
-```export OPENAI_API_KEY=your_api_key
+```
+export OPENAI_API_KEY=your_api_key
 ```
 
 Replace `your_api_key` with your actual OpenAI API key.
@@ -50,22 +51,28 @@ Replace `your_api_key` with your actual OpenAI API key.
 
 2. Access the chatbot API using the following endpoint:
 
-```http://localhost:5000/api/chat``` 
+```
+http://localhost:5000/api/chat
+``` 
 
 The endpoint expects a JSON payload with the following structure:
 
-```json
+```
+json
 {
   "query": "Your query or message"
-}```
+}
+```
 
 Example usage with cURL:
 
-```curl -X POST -H "Content-Type: application/json" -d '{"query": "Hello"}' http://localhost:5000/api/chat
+```
+curl -X POST -H "Content-Type: application/json" -d '{"query": "Hello"}' http://localhost:5000/api/chat
 ```
 The chatbot will respond with a JSON object containing the answer:
 
-```{
+```
+{
   "answer": "The chatbot's response"
 }
 ```
@@ -74,7 +81,7 @@ To end the conversation, you can send one of the following messages:` "quit", "q
 
 Troubleshooting
 If you encounter any errors or issues while running the project, please ensure that you have followed the installation steps correctly and that all dependencies are installed.
-
+If you encounter any issues with the Langchain library, you may consider using an older version of the library as it could potentially be more stable and have fewer bugs.
 If you receive a rate limit error from the OpenAI API, the chatbot will automatically retry up to three times before returning a rate limit exceeded message. You can adjust the MAX_RETRY_COUNT variable in the index.py file if needed.
 
 License
