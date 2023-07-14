@@ -1,8 +1,0 @@
-Flask
-openai
-langchain==0.0.197
-Flask-Cors
-chromadb
-hnswlib
-tiktoken
-unstructured
