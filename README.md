@@ -1,14 +1,19 @@
-# Project Name
+# Chatbot API
 
 ## Description
 
-This project is a conversational chatbot powered by the OpenAI GPT-3.5 Turbo model. It allows users to have interactive conversations with the chatbot and receive answers to their queries.
+This project is a conversational chatbot API powered by the OpenAI model. It allows users to have interactive conversations with the chatbot and receive answers to their queries based on a predefined document set.
+
+## Features
+- Interactive conversation with the chatbot
+- Retrieval-based question answering using the OpenAI model
+- Predefined document set for generating responses
 
 ## Prerequisites
 
 Before running the project, ensure that you have the following:
 
-- Python (version X.X.X)
+- Python (version  ≥ 3.8.1 )
 - Flask (version X.X.X)
 - Flask-CORS (version X.X.X)
 - OpenAI Python SDK (version X.X.X)
