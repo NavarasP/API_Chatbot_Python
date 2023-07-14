@@ -28,7 +28,8 @@ cd your-repository
 ```
 4. Install the required dependencies using pip:
 
-```pip install -r requirements.txt
+```
+pip install -r requirements.txt
 ```
 ## Configuration
 
@@ -73,6 +74,7 @@ To end the conversation, you can send one of the following messages:` "quit", "q
 
 Troubleshooting
 If you encounter any errors or issues while running the project, please ensure that you have followed the installation steps correctly and that all dependencies are installed.
+
 If you receive a rate limit error from the OpenAI API, the chatbot will automatically retry up to three times before returning a rate limit exceeded message. You can adjust the MAX_RETRY_COUNT variable in the index.py file if needed.
 
 License
