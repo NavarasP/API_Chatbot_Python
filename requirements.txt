@@ -1,16 +1,8 @@
-Flask==2.3.2
-openai==0.27.8
+Flask
+openai
 langchain==0.0.197
-# chromadb==0.3.27
-
-
-# hnswlib==0.7.0
-
-# langchainplus-sdk==0.0.20
-# numexpr==2.8.4
-# numpy==1.25.1
-
-# openapi-schema-pydantic==1.2.4
-# pydantic==1.9.0
-# tiktoken==0.4.0
-# unstructured==0.8.1
+Flask-Cors
+chromadb
+hnswlib
+tiktoken
+unstructured
