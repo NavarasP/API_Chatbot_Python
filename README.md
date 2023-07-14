@@ -77,7 +77,7 @@ The chatbot will respond with a JSON object containing the answer:
 }
 ```
 
-To end the conversation, you can send one of the following messages:` "quit", "q", or "exit"`.
+To end the conversation, you can send one of the following messages:`"quit"`,` "q"`, or `"exit"`.
 
 Troubleshooting
 If you encounter any errors or issues while running the project, please ensure that you have followed the installation steps correctly and that all dependencies are installed.
