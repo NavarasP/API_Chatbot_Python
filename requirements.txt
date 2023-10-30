@@ -1,7 +1,7 @@
 Flask
 Flask-Cors
 openai
-langchain==0.0.197
+langchain==0.0.325
 chromadb
 tiktoken
 unstructured
